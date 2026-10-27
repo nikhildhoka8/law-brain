@@ -1,0 +1,15 @@
+# Your private settings and class materials stay on your computer.
+my-settings.md
+raw/**
+!raw/**/
+!raw/**/README.md
+!raw/**/.gitkeep
+!raw/README.md
+
+# Notes you build stay on your computer too. Only the empty skeleton is shared.
+vault/*/**
+!vault/*/.gitkeep
+!vault/.obsidian/*.json
+vault/.obsidian/workspace*.json
+
+.DS_Store
