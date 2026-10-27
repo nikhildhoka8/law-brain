@@ -39,7 +39,8 @@ green **Code** button, then **Download ZIP**, and unzip it somewhere you'll find
 
 **4. Add your materials.** Drag your own files into the `raw/` folder, into whichever
 subfolder fits: `syllabus/`, `cases/`, `class-notes/`, `outlines/`, or `exams/`. PDF,
-Word, Markdown, and text files all work. If your stuff is on Google Drive, OneDrive,
+Word, PowerPoint, Markdown, plain text, saved emails, and even phone photos or scans
+of handouts all work. If your stuff is on Google Drive, OneDrive,
 Notion, Canvas, or email, see [SOURCES.md](SOURCES.md): your agent can often fetch it.
 
 **5. Tell your agent to build the graph.** Open your AI helper in the `law-brain`
