@@ -197,17 +197,34 @@ Ingest always reads from `raw/`. Nothing else is ever ingested directly.
 
 1. **Settings.** Load `my-settings.md` (or run the first-run questions in section 0).
 2. **Inventory.** List every file in `raw/` and its subfolders, skipping `.gitkeep` and
-   `README.md` files. Supported: `.pdf`, `.docx`, `.md`, `.txt`. For anything else
-   (slides, images, spreadsheets), tell the student and ask them to save it as PDF or
-   text. Skip any file already recorded in `vault/sources/` with the same name and
-   date unless the student asks to re-ingest it.
-3. **Read.** Use your own built-in file reading. Do not install anything. If you cannot
-   read a `.docx` directly, it is a zip archive: the text is in `word/document.xml`
-   (macOS also has `textutil -convert txt <file> -stdout`). Most agents read PDFs
-   natively. If yours cannot, on macOS this built-in command prints a PDF's text:
-   `osascript -l JavaScript -e "ObjC.import('PDFKit'); $.PDFDocument.alloc.initWithURL($.NSURL.fileURLWithPath('<file>')).string.js"`.
-   A scanned PDF (a photo of pages) has no text layer: tell the student and ask them to
-   run it through their PDF app's text recognition, or to export it as text.
+   `README.md` files. Skip any file already recorded in `vault/sources/` with the same
+   name and date unless the student asks to re-ingest it.
+3. **Read.** Use your own built-in file reading first. Never install anything. Formats
+   and fallbacks (every command below ships with macOS; on Windows, ask the student to
+   use "Save As" or "Export" to PDF or text when you cannot read a file):
+   - `.md`, `.txt`, `.eml` (saved email): plain text, read directly. For email, keep
+     the sender, date, and subject; skip quoted replies you already have.
+   - `.docx`: `textutil -convert txt -stdout "<file>"`. It is also a zip archive:
+     the text is in `word/document.xml`. **Read the margin comments too**, in
+     `word/comments.xml` (`unzip -p "<file>" word/comments.xml`). Comments are often
+     where the professor's feedback or the student's exam flags live. Record each
+     comment's author.
+   - `.rtf`, `.doc`, `.odt`, `.pages` exported to `.rtf`: `textutil -convert txt
+     -stdout "<file>"`.
+   - `.pptx` (slides): a zip archive. Slide text is in `ppt/slides/slideN.xml` and the
+     speaker notes in `ppt/notesSlides/notesSlideN.xml`
+     (`unzip -p "<file>" "ppt/slides/*.xml"`, then strip the tags). Speaker notes are
+     the professor talking to themselves: treat them as strong professor signals.
+   - `.pdf`: most agents read PDFs natively. If yours cannot, this built-in command
+     prints the text: `osascript -l JavaScript -e "ObjC.import('PDFKit');
+     $.PDFDocument.alloc.initWithURL($.NSURL.fileURLWithPath('<file>')).string.js"`.
+   - **Scans and photos** (a PDF with no text, or `.png`/`.jpg`/`.heic`): if you can
+     view images, read the page image yourself, including handwriting, and mark
+     anything you could not make out as `[illegible]`. If you cannot view images,
+     tell the student and ask them to run the file through their PDF app's text
+     recognition (Preview on a Mac can copy text from scans), then save it as text.
+   - Anything else (spreadsheets, audio, video): tell the student which files you
+     skipped and how to save them as PDF or text.
 4. **Classify** each file as one of: syllabus, case brief or opinion excerpt, class
    notes, outline, exam or practice question, or other. The `raw/` subfolder is a hint,
    not proof. Note which course it belongs to (ask if unclear).
