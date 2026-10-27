@@ -12,4 +12,6 @@ uploaded to GitHub (the `.gitignore` file keeps it private).
 | `outlines/` | Outlines you wrote yourself |
 | `exams/` | Practice exams and old exams your professor released |
 
-Files can be PDF, Word (.docx), Markdown (.md), or plain text (.txt).
+Files can be PDF, Word (.docx), PowerPoint (.pptx), RTF, Markdown (.md), plain text
+(.txt), saved emails (.eml), or scans and photos of handouts. If the agent can't read
+something, it will tell you how to save it in a format it can.
