@@ -360,7 +360,9 @@ Classroom, anywhere):
 
 ## 9. The other prompts
 
-`prompts/attack-outline.md`, `prompts/quiz.md`, and `prompts/gaps.md` only read the
+`prompts/setup.md` gets the kit onto a new student's computer (a plain download, no
+GitHub account or git needed), gathers their materials into `raw/` per section 8, then
+runs ingest. `prompts/attack-outline.md`, `prompts/quiz.md`, and `prompts/gaps.md` only read the
 vault. They never create or change notes unless the student asks; if the student asks
 to save an output, write it into `vault/_maps/<course>/` (for example
 `vault/_maps/torts/Attack - Negligence.md`).
