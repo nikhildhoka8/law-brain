@@ -1,8 +1,8 @@
 # raw/: your drop zone
 
 Put your own class materials here, sorted into the folders below. Your agent reads
-everything in here when you say "run the ingest prompt". Nothing in `raw/` is ever
-uploaded to GitHub (the `.gitignore` file keeps it private).
+everything in here when you say "run the ingest prompt". These files stay on your
+computer; the kit never uploads them anywhere.
 
 | Folder | What goes in it |
 |---|---|
